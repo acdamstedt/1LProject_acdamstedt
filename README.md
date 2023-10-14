@@ -1,6 +1,6 @@
 # 1LProject_acdamstedt
 
-Mathemagicians   
+Mathemagicians 
 
 Goals for Fall Quarter:   
   * Create a cookie clicker base game (very similar to Adventure Capitalist)
