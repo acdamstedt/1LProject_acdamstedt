@@ -14,7 +14,7 @@ Week 1:
 
 Week 2:
   * Create a project in Godot ✅
-  * Learn the basics of how to create a video game in Godot ❌
+  * Learn the basics of how to create a video game in Godot ✅
   * (optional) Start creating the cookie clicker base game ❌
 
 Week 3: 
