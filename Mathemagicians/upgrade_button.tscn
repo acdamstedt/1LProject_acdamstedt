@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bao5p4mg2f0px"]
+
+[node name="UpgradeButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
