@@ -1,134 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://b84sguu5fqajl"]
+[gd_scene load_steps=5 format=3 uid="uid://b84sguu5fqajl"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_60103"]
-[ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="2_mweru"]
-
-[sub_resource type="GDScript" id="GDScript_bf5e4"]
-script/source = "extends Camera2D
-
-var scrollSpeed = 1280
-
-func _process(delta):
-	if Input.is_action_pressed(\"camera_down\"):
-		position.y += scrollSpeed
-	if Input.is_action_pressed(\"camera_up\"):
-		position.y -= scrollSpeed
-	
-	position.y = clamp(position.y, 0, 1280)
-"
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_rs0wh"]
+[ext_resource type="FontFile" uid="uid://bl2l6gpa7cxil" path="res://fonts/DarkMagic-2O3w8.ttf" id="3_db03w"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="4_2qf2w"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_60103")
 
-[node name="Background" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 1280.0
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_rs0wh")
+centered = false
+
+[node name="Title" type="Label" parent="."]
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -408.0
+offset_right = 360.0
+offset_bottom = -229.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.537255, 0.447059, 0.807843, 1)
+theme_override_fonts/font = ExtResource("3_db03w")
+theme_override_font_sizes/font_size = 130
+text = "Mathemagicians"
+horizontal_alignment = 1
 
-[node name="HUD" parent="." instance=ExtResource("2_mweru")]
-
-[node name="Spot1" type="Marker2D" parent="."]
-position = Vector2(64, 192)
-
-[node name="Spot2" type="Marker2D" parent="."]
-position = Vector2(64, 384)
-
-[node name="Spot3" type="Marker2D" parent="."]
-position = Vector2(64, 576)
-
-[node name="Spot4" type="Marker2D" parent="."]
-position = Vector2(64, 768)
-
-[node name="Spot5" type="Marker2D" parent="."]
-position = Vector2(64, 960)
-
-[node name="Spot6" type="Marker2D" parent="."]
-position = Vector2(64, 1472)
-
-[node name="Spot7" type="Marker2D" parent="."]
-position = Vector2(64, 1672)
-
-[node name="Spot8" type="Marker2D" parent="."]
-position = Vector2(64, 1856)
-
-[node name="Spot9" type="Marker2D" parent="."]
-position = Vector2(64, 2048)
-
-[node name="Spot10" type="Marker2D" parent="."]
-position = Vector2(64, 2240)
-
-[node name="TopOfScreen" type="ColorRect" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 140.0
+[node name="StartButton" type="Button" parent="."]
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -184.0
+offset_right = 127.5
+offset_bottom = -51.0
 grow_horizontal = 2
-color = Color(0, 0, 0, 0.392157)
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_2qf2w")
+theme_override_font_sizes/font_size = 100
+text = "Start"
 
-[node name="TopOfScreen2" type="ColorRect" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 1280.0
-offset_bottom = 1420.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 0.392157)
-
-[node name="BottomOfScreen" type="ColorRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -140.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.392157)
-
-[node name="BottomOfScreen2" type="ColorRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1140.0
-offset_bottom = 1280.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.392157)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-drag_vertical_enabled = true
-script = SubResource("GDScript_bf5e4")
-
-[node name="AvatarButton" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 112.0
-offset_bottom = 120.0
-
-[node name="TotalMoney" type="Label" parent="."]
-offset_left = 128.0
-offset_top = 16.0
-offset_right = 512.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 50
-text = "$[TotalMoney]"
-
-[node name="AvatarButton2" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 1296.0
-offset_right = 112.0
-offset_bottom = 1400.0
-
-[node name="TotalMoney2" type="Label" parent="."]
-offset_left = 128.0
-offset_top = 1296.0
-offset_right = 512.0
-offset_bottom = 1368.0
-theme_override_font_sizes/font_size = 50
-text = "$[TotalMoney]"
-
-[connection signal="startGame" from="HUD" to="." method="_on_hud_start_game"]
-[connection signal="startGame" from="HUD" to="." method="StartGame"]
+[connection signal="startGame" from="." to="." method="StartGame"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -1,11 +1,17 @@
-[gd_scene format=3 uid="uid://bwrpipapyffof"]
+[gd_scene load_steps=3 format=3 uid="uid://bwrpipapyffof"]
+
+[ext_resource type="Script" path="res://new_clicker.gd" id="1_78dko"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="1_ye111"]
 
 [node name="NewClicker" type="Button"]
-anchors_preset = -1
 offset_left = 232.0
 offset_right = 488.0
 offset_bottom = 128.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ye111")
 theme_override_font_sizes/font_size = 20
 text = "[Elixir of Exponents]
 $[Cost]"
+script = ExtResource("1_78dko")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

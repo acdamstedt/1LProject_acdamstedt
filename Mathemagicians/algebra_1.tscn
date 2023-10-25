@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6qv6ojobxyap"]
+
+[ext_resource type="Script" path="res://algebra_1.gd" id="1_aan28"]
+[ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="1_dx800"]
+[ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="2_d40lj"]
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_pp3hv"]
+[ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="3_dqlsb"]
+[ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="5_lxesy"]
+[ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="6_ylst2"]
+
+[node name="Algebra1" type="Node"]
+script = ExtResource("1_aan28")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_pp3hv")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(720, 0)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_pp3hv")
+centered = false
+
+[node name="HUD" parent="." instance=ExtResource("2_d40lj")]
+
+[node name="Camera2D" parent="." instance=ExtResource("1_dx800")]
+anchor_mode = 0
+
+[node name="Clicker1" parent="." instance=ExtResource("3_dqlsb")]
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 172.0
+offset_bottom = 300.0
+
+[node name="Clicker2" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -0.0800011
+offset_top = 192.0
+offset_right = 135.92
+offset_bottom = 328.0
+icon = ExtResource("6_ylst2")
+
+[node name="Clicker3" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -0.0800011
+offset_top = 384.0
+offset_right = 135.92
+offset_bottom = 520.0
+
+[node name="Clicker4" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -0.0800011
+offset_top = 576.0
+offset_right = 135.92
+offset_bottom = 712.0
+
+[node name="Clicker5" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -0.0800011
+offset_top = 768.0
+offset_right = 135.92
+offset_bottom = 904.0
+
+[node name="NewClicker2" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 408.0
+offset_right = 128.0
+offset_bottom = 536.0
+
+[node name="NewClicker3" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 600.0
+offset_right = 128.0
+offset_bottom = 728.0
+
+[node name="NewClicker4" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 792.0
+offset_right = 128.0
+offset_bottom = 920.0
+
+[node name="NewClicker5" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 984.0
+offset_right = 128.0
+offset_bottom = 1112.0
+
+[connection signal="clicker1upgrade" from="." to="." method="_clicker_1_upgrade"]
+[connection signal="pressed" from="NewClicker2" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="pressed" from="NewClicker3" to="." method="_on_new_clicker_3_pressed"]
+[connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]
+[connection signal="pressed" from="NewClicker5" to="." method="_on_new_clicker_5_pressed"]

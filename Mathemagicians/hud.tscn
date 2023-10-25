@@ -1,39 +1,108 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqjt2jrwvrtr2"]
+[gd_scene load_steps=7 format=3 uid="uid://dqjt2jrwvrtr2"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_n0g5y"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="2_qya66"]
+[ext_resource type="Texture2D" uid="uid://ugtcwgkpwj53" path="res://art/Wizard1.png" id="3_mux8x"]
+[ext_resource type="Texture2D" uid="uid://mku2jvgkeqjg" path="res://art/Wizard2.png" id="4_arfj7"]
+[ext_resource type="Texture2D" uid="uid://dvr66k2tehsb6" path="res://art/Wizard3.png" id="5_l3st5"]
+[ext_resource type="Texture2D" uid="uid://buw1p3qwcomnb" path="res://art/Wizard4.png" id="6_sy0s1"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n0g5y")
 
-[node name="Title" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -128.0
-offset_right = 360.0
-offset_bottom = -19.0
+[node name="TopOfScreen" type="ColorRect" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 140.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-text = "Mathemagicians"
-horizontal_alignment = 1
+color = Color(0, 0, 0, 0.392157)
 
-[node name="StartButton" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -32.0
-offset_right = 67.0
-offset_bottom = 45.0
+[node name="BottomOfScreen" type="ColorRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="AvatarButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("2_qya66")
+icon = ExtResource("3_mux8x")
+
+[node name="TotalMoney" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 512.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("2_qya66")
 theme_override_font_sizes/font_size = 50
-text = "Start"
+text = "$[TotalMoney]"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.929412, 0.717647, 0.847059, 1)
+
+[node name="AvatarImage" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(368, 360)
+scale = Vector2(5.12125, 5.12125)
+texture = ExtResource("3_mux8x")
+
+[node name="ExitButton" type="Button" parent="."]
+visible = false
+offset_left = 640.0
+offset_top = 16.0
+offset_right = 696.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_qya66")
+text = "X"
+
+[node name="AvatarSelect1" type="Button" parent="."]
+visible = false
+offset_left = 80.0
+offset_top = 680.0
+offset_right = 336.0
+offset_bottom = 936.0
+icon = ExtResource("3_mux8x")
+expand_icon = true
+
+[node name="AvatarSelect2" type="Button" parent="."]
+visible = false
+offset_left = 400.0
+offset_top = 680.0
+offset_right = 656.0
+offset_bottom = 936.0
+icon = ExtResource("4_arfj7")
+expand_icon = true
+
+[node name="AvatarSelect3" type="Button" parent="."]
+visible = false
+offset_left = 80.0
+offset_top = 960.0
+offset_right = 336.0
+offset_bottom = 1216.0
+icon = ExtResource("5_l3st5")
+expand_icon = true
+
+[node name="AvatarSelect4" type="Button" parent="."]
+visible = false
+offset_left = 400.0
+offset_top = 960.0
+offset_right = 656.0
+offset_bottom = 1216.0
+icon = ExtResource("6_sy0s1")
+expand_icon = true
+
+[connection signal="pressed" from="AvatarButton" to="." method="_on_avatar_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

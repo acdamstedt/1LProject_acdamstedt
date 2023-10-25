@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0qg3qotcj1ro"]
+
+[ext_resource type="Script" path="res://save_game.gd" id="1_tavpy"]
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_f5hxe"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="3_75ap4"]
+
+[node name="SaveGame" type="Node"]
+script = ExtResource("1_tavpy")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_f5hxe")
+centered = false
+
+[node name="SaveGameText" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_75ap4")
+theme_override_font_sizes/font_size = 80
+text = "Choose Save File"
+horizontal_alignment = 1
+
+[node name="SaveGame1" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 240.0
+offset_right = 190.0
+offset_bottom = 331.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_75ap4")
+theme_override_font_sizes/font_size = 60
+text = "Save Game 1
+"
+
+[node name="SaveGame2" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 408.0
+offset_right = 190.0
+offset_bottom = 499.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_75ap4")
+theme_override_font_sizes/font_size = 60
+text = "Save Game 2
+"
+
+[node name="SaveGame3" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 560.0
+offset_right = 190.0
+offset_bottom = 651.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_75ap4")
+theme_override_font_sizes/font_size = 60
+text = "Save Game 3
+"
+
+[connection signal="pressed" from="SaveGame1" to="." method="_on_save_game_1_pressed"]
+[connection signal="pressed" from="SaveGame2" to="." method="_on_save_game_2_pressed"]
+[connection signal="pressed" from="SaveGame3" to="." method="_on_save_game_3_pressed"]

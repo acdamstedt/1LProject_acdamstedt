@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cibygsbaclghs"]
+
+[ext_resource type="Script" path="res://level_select.gd" id="1_qonsg"]
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_r363t"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="3_j67x2"]
+
+[node name="LevelSelect" type="Node"]
+script = ExtResource("1_qonsg")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_r363t")
+centered = false
+
+[node name="LevelSelectText" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_j67x2")
+theme_override_font_sizes/font_size = 65
+text = "Choose Level"
+horizontal_alignment = 1
+
+[node name="Algebra1" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 192.0
+offset_right = 118.0
+offset_bottom = 269.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_j67x2")
+theme_override_font_sizes/font_size = 50
+text = "Algebra 1"
+
+[node name="Algebra2" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 320.0
+offset_right = 118.0
+offset_bottom = 397.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_j67x2")
+theme_override_font_sizes/font_size = 50
+text = "Algebra 2
+"
+
+[connection signal="pressed" from="Algebra1" to="." method="_on_algebra_1_pressed"]
+[connection signal="pressed" from="Algebra2" to="." method="_on_algebra_2_pressed"]
