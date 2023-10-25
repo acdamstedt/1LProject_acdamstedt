@@ -1,9 +1,10 @@
+# HUD
+
 extends CanvasLayer
 
-
-
+# Avatar Button Functionality
 func _on_avatar_button_pressed():
-	$Background.show()
+	$Background.show() # Probably a way to condense this code using groups, don't know how
 	$AvatarImage.show()
 	$ExitButton.show()
 	$AvatarSelect1.show()

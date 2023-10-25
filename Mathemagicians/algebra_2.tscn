@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://kn1ffw2cut41"]
+[gd_scene load_steps=4 format=3 uid="uid://kn1ffw2cut41"]
 
 [ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="1_qgct0"]
+[ext_resource type="Script" path="res://algebra_2.gd" id="1_v43ij"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="3_0groj"]
 
 [node name="Algebra2" type="Node"]
+script = ExtResource("1_v43ij")
 
 [node name="FillerLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -23,3 +26,14 @@ horizontal_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("1_qgct0")]
 visible = false
+
+[node name="TestButton" type="Button" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_0groj")
+theme_override_font_sizes/font_size = 50
+text = "Test Button"
+
+[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]

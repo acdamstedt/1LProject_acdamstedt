@@ -1,6 +1,8 @@
+# SaveGame
+
 extends Node
 
-# Eventually implement save game functionality
+# Eventually implement save game functionality, just changes scene now
 
 func _on_save_game_1_pressed():
 	get_tree().change_scene_to_file("res://level_select.tscn")

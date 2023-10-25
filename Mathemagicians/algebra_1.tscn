@@ -118,7 +118,7 @@ offset_top = 984.0
 offset_right = 128.0
 offset_bottom = 1112.0
 
-[connection signal="clicker1upgrade" from="." to="." method="_clicker_1_upgrade"]
+[connection signal="onUpgradePressed" from="Clicker1" to="." method="_on_clicker_1_on_upgrade_pressed"]
 [connection signal="pressed" from="NewClicker2" to="." method="_on_new_clicker_2_pressed"]
 [connection signal="pressed" from="NewClicker3" to="." method="_on_new_clicker_3_pressed"]
 [connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]
