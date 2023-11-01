@@ -2,6 +2,11 @@
 
 extends CanvasLayer
 
+@export var totalMoney = 0
+
+func _process(delta):
+	$TotalMoney.text = "$" + str(totalMoney)
+
 # Avatar Button Functionality
 func _on_avatar_button_pressed():
 	$Background.show() # Probably a way to condense this code using groups, don't know how

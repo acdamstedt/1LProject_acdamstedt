@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6qv6ojobxyap"]
+[gd_scene load_steps=10 format=3 uid="uid://b6qv6ojobxyap"]
 
 [ext_resource type="Script" path="res://algebra_1.gd" id="1_aan28"]
 [ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="1_dx800"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="3_dqlsb"]
 [ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="5_lxesy"]
 [ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="6_ylst2"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="8_e4b7d"]
+[ext_resource type="Texture2D" uid="uid://01qclyk7ndvk" path="res://icon.svg" id="8_ky6eo"]
 
 [node name="Algebra1" type="Node"]
 script = ExtResource("1_aan28")
@@ -17,10 +19,24 @@ texture = ExtResource("2_pp3hv")
 centered = false
 
 [node name="Background2" type="Sprite2D" parent="."]
-position = Vector2(720, 0)
+position = Vector2(0, 1280)
 scale = Vector2(0.666667, 0.666667)
 texture = ExtResource("2_pp3hv")
 centered = false
+flip_v = true
+
+[node name="Background3" type="Sprite2D" parent="."]
+position = Vector2(1, 2560)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_pp3hv")
+centered = false
+
+[node name="Background4" type="Sprite2D" parent="."]
+position = Vector2(0, -1280)
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_pp3hv")
+centered = false
+flip_v = true
 
 [node name="HUD" parent="." instance=ExtResource("2_d40lj")]
 
@@ -28,10 +44,10 @@ centered = false
 anchor_mode = 0
 
 [node name="Clicker1" parent="." instance=ExtResource("3_dqlsb")]
-offset_left = 64.0
+offset_left = 48.0
 offset_top = 192.0
-offset_right = 172.0
-offset_bottom = 300.0
+offset_right = 171.0
+offset_bottom = 315.0
 
 [node name="Clicker2" parent="." instance=ExtResource("3_dqlsb")]
 visible = false
@@ -40,10 +56,10 @@ anchor_left = 0.089
 anchor_top = 0.15
 anchor_right = 0.089
 anchor_bottom = 0.15
-offset_left = -0.0800011
+offset_left = -24.08
 offset_top = 192.0
-offset_right = 135.92
-offset_bottom = 328.0
+offset_right = 98.92
+offset_bottom = 315.0
 icon = ExtResource("6_ylst2")
 
 [node name="Clicker3" parent="." instance=ExtResource("3_dqlsb")]
@@ -53,10 +69,10 @@ anchor_left = 0.089
 anchor_top = 0.15
 anchor_right = 0.089
 anchor_bottom = 0.15
-offset_left = -0.0800011
+offset_left = -24.08
 offset_top = 384.0
-offset_right = 135.92
-offset_bottom = 520.0
+offset_right = 98.92
+offset_bottom = 507.0
 
 [node name="Clicker4" parent="." instance=ExtResource("3_dqlsb")]
 visible = false
@@ -65,10 +81,10 @@ anchor_left = 0.089
 anchor_top = 0.15
 anchor_right = 0.089
 anchor_bottom = 0.15
-offset_left = -0.0800011
+offset_left = -24.08
 offset_top = 576.0
-offset_right = 135.92
-offset_bottom = 712.0
+offset_right = 98.92
+offset_bottom = 699.0
 
 [node name="Clicker5" parent="." instance=ExtResource("3_dqlsb")]
 visible = false
@@ -77,10 +93,10 @@ anchor_left = 0.089
 anchor_top = 0.15
 anchor_right = 0.089
 anchor_bottom = 0.15
-offset_left = -0.0800011
+offset_left = -24.08
 offset_top = 768.0
-offset_right = 135.92
-offset_bottom = 904.0
+offset_right = 104.92
+offset_bottom = 897.0
 
 [node name="NewClicker2" parent="." instance=ExtResource("5_lxesy")]
 anchors_preset = 5
@@ -118,8 +134,279 @@ offset_top = 984.0
 offset_right = 128.0
 offset_bottom = 1112.0
 
+[node name="Clicker6" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+offset_left = 768.0
+offset_top = 192.0
+offset_right = 891.0
+offset_bottom = 315.0
+
+[node name="Clicker7" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 192.0
+offset_right = 98.92
+offset_bottom = 315.0
+icon = ExtResource("6_ylst2")
+
+[node name="Clicker8" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 384.0
+offset_right = 98.92
+offset_bottom = 507.0
+
+[node name="Clicker9" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 576.0
+offset_right = 98.92
+offset_bottom = 699.0
+
+[node name="Clicker10" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 768.0
+offset_right = 104.92
+offset_bottom = 897.0
+
+[node name="NewClicker6" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 1187.0
+offset_right = 128.0
+offset_bottom = 1315.0
+
+[node name="NewClicker7" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 1371.0
+offset_right = 128.0
+offset_bottom = 1499.0
+
+[node name="NewClicker8" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 1563.0
+offset_right = 128.0
+offset_bottom = 1691.0
+
+[node name="NewClicker9" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 1755.0
+offset_right = 128.0
+offset_bottom = 1883.0
+
+[node name="NewClicker10" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 1947.0
+offset_right = 128.0
+offset_bottom = 2075.0
+
+[node name="Clicker11" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+offset_left = 1488.0
+offset_top = 192.0
+offset_right = 1611.0
+offset_bottom = 315.0
+
+[node name="Clicker12" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 192.0
+offset_right = 98.92
+offset_bottom = 315.0
+icon = ExtResource("6_ylst2")
+
+[node name="Clicker13" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 384.0
+offset_right = 98.92
+offset_bottom = 507.0
+
+[node name="Clicker14" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 576.0
+offset_right = 98.92
+offset_bottom = 699.0
+
+[node name="Clicker15" parent="." instance=ExtResource("3_dqlsb")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 768.0
+offset_right = 104.92
+offset_bottom = 897.0
+
+[node name="NewClicker11" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 2144.0
+offset_right = 130.0
+offset_bottom = 2272.0
+
+[node name="NewClicker12" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 2328.0
+offset_right = 130.0
+offset_bottom = 2456.0
+
+[node name="NewClicker13" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 2520.0
+offset_right = 130.0
+offset_bottom = 2648.0
+
+[node name="NewClicker14" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 2904.0
+offset_right = 130.0
+offset_bottom = 3032.0
+
+[node name="NewClicker15" parent="." instance=ExtResource("5_lxesy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 2712.0
+offset_right = 130.0
+offset_bottom = 2840.0
+
+[node name="UpgradeBackground" type="ColorRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 0.006
+anchor_bottom = 0.006
+offset_left = 40.0
+offset_top = 162.32
+offset_right = 688.0
+offset_bottom = 1114.32
+color = Color(0.752941, 0.54902, 0.776471, 1)
+
+[node name="Question" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.489
+anchor_top = 0.131
+anchor_right = 0.489
+anchor_bottom = 0.131
+offset_left = -296.08
+offset_top = 16.32
+offset_right = 231.92
+offset_bottom = 760.32
+theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_font_sizes/font_size = 60
+text = "Hello"
+autowrap_mode = 2
+
+[node name="Answer" type="LineEdit" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 960.0
+offset_right = 664.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter Answer Here"
+clear_button_enabled = true
+
+[node name="ExitButton" type="Button" parent="."]
+visible = false
+offset_left = 616.0
+offset_top = 192.0
+offset_right = 672.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(584, 736)
+texture = ExtResource("8_ky6eo")
+
 [connection signal="onUpgradePressed" from="Clicker1" to="." method="_on_clicker_1_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker1" to="." method="_on_clicker_1_pressed"]
+[connection signal="onUpgradePressed" from="Clicker2" to="." method="_on_clicker_2_on_upgrade_pressed"]
 [connection signal="pressed" from="NewClicker2" to="." method="_on_new_clicker_2_pressed"]
 [connection signal="pressed" from="NewClicker3" to="." method="_on_new_clicker_3_pressed"]
 [connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]
 [connection signal="pressed" from="NewClicker5" to="." method="_on_new_clicker_5_pressed"]
+[connection signal="onUpgradePressed" from="Clicker7" to="." method="_on_clicker_2_on_upgrade_pressed"]
+[connection signal="pressed" from="NewClicker6" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="pressed" from="NewClicker7" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="pressed" from="NewClicker8" to="." method="_on_new_clicker_3_pressed"]
+[connection signal="pressed" from="NewClicker9" to="." method="_on_new_clicker_4_pressed"]
+[connection signal="pressed" from="NewClicker10" to="." method="_on_new_clicker_5_pressed"]
+[connection signal="onUpgradePressed" from="Clicker12" to="." method="_on_clicker_2_on_upgrade_pressed"]
+[connection signal="pressed" from="NewClicker11" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="pressed" from="NewClicker12" to="." method="_on_new_clicker_3_pressed"]
+[connection signal="pressed" from="NewClicker13" to="." method="_on_new_clicker_4_pressed"]
+[connection signal="pressed" from="NewClicker14" to="." method="_on_new_clicker_5_pressed"]
+[connection signal="pressed" from="NewClicker15" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

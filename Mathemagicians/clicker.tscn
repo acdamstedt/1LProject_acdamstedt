@@ -70,6 +70,6 @@ text = "[Input Number]"
 horizontal_alignment = 1
 
 [node name="ClickerTimer" type="Timer" parent="."]
-autostart = true
+one_shot = true
 
 [connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
