@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqjt2jrwvrtr2"]
+[gd_scene load_steps=9 format=3 uid="uid://dqjt2jrwvrtr2"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_n0g5y"]
+[ext_resource type="FontFile" uid="uid://bl2l6gpa7cxil" path="res://fonts/DarkMagic-2O3w8.ttf" id="2_6axhs"]
 [ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="2_qya66"]
 [ext_resource type="Texture2D" uid="uid://ugtcwgkpwj53" path="res://art/Wizard1.png" id="3_mux8x"]
 [ext_resource type="Texture2D" uid="uid://mku2jvgkeqjg" path="res://art/Wizard2.png" id="4_arfj7"]
 [ext_resource type="Texture2D" uid="uid://dvr66k2tehsb6" path="res://art/Wizard3.png" id="5_l3st5"]
 [ext_resource type="Texture2D" uid="uid://buw1p3qwcomnb" path="res://art/Wizard4.png" id="6_sy0s1"]
+[ext_resource type="Texture2D" uid="uid://dpy83je6hfgvk" path="res://art/VaporVariables.png" id="8_tvoug"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n0g5y")
@@ -27,6 +29,34 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.392157)
 
+[node name="Title" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_right = -11.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_6axhs")
+theme_override_font_sizes/font_size = 40
+text = "Mathemagician"
+
+[node name="Menu" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -104.0
+offset_right = 74.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 60
+text = "Menu"
+
 [node name="AvatarButton" type="Button" parent="."]
 offset_left = 16.0
 offset_top = 16.0
@@ -38,11 +68,21 @@ icon = ExtResource("3_mux8x")
 [node name="TotalMoney" type="Label" parent="."]
 offset_left = 128.0
 offset_top = 16.0
-offset_right = 512.0
-offset_bottom = 64.0
+offset_right = 448.0
+offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("2_qya66")
 theme_override_font_sizes/font_size = 50
 text = "$[TotalMoney]"
+
+[node name="SpecialClicker" type="Button" parent="."]
+visible = false
+offset_left = 560.0
+offset_top = 35.0
+offset_right = 656.0
+offset_bottom = 147.0
+icon = ExtResource("8_tvoug")
+flat = true
+expand_icon = true
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false
@@ -51,7 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.929412, 0.717647, 0.847059, 1)
+color = Color(0.929412, 0.717647, 0.847059, 0.803922)
 
 [node name="AvatarImage" type="Sprite2D" parent="."]
 visible = false
@@ -71,19 +111,22 @@ text = "X"
 [node name="AvatarSelect1" type="Button" parent="."]
 visible = false
 offset_left = 80.0
-offset_top = 680.0
+offset_top = 658.0
 offset_right = 336.0
-offset_bottom = 936.0
+offset_bottom = 914.0
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0.556863)
 icon = ExtResource("3_mux8x")
 expand_icon = true
 
 [node name="AvatarSelect2" type="Button" parent="."]
 visible = false
 offset_left = 400.0
-offset_top = 680.0
+offset_top = 658.0
 offset_right = 656.0
-offset_bottom = 936.0
+offset_bottom = 914.0
+text = "Cost $100"
 icon = ExtResource("4_arfj7")
+clip_text = true
 expand_icon = true
 
 [node name="AvatarSelect3" type="Button" parent="."]
@@ -104,5 +147,78 @@ offset_bottom = 1216.0
 icon = ExtResource("6_sy0s1")
 expand_icon = true
 
+[node name="LevelSelect" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = 296.0
+offset_right = 134.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 50
+text = "Level Select
+WARNING: will reset progress"
+
+[node name="Cheat $1000" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 400.0
+offset_right = 143.0
+offset_bottom = 462.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 50
+text = "Cheat $1000"
+
+[node name="Cost" type="Label" parent="."]
+visible = false
+offset_left = 491.0
+offset_top = 912.0
+offset_right = 587.0
+offset_bottom = 948.0
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 30
+text = "$100"
+
+[node name="Cost2" type="Label" parent="."]
+visible = false
+offset_left = 168.0
+offset_top = 1224.0
+offset_right = 264.0
+offset_bottom = 1260.0
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 30
+text = "$5000"
+
+[node name="Cost3" type="Label" parent="."]
+visible = false
+offset_left = 464.0
+offset_top = 1224.0
+offset_right = 608.0
+offset_bottom = 1260.0
+theme_override_fonts/font = ExtResource("2_qya66")
+theme_override_font_sizes/font_size = 30
+text = "$1000000"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="AvatarButton" to="." method="_on_avatar_button_pressed"]
+[connection signal="pressed" from="SpecialClicker" to="." method="_on_special_clicker_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="AvatarSelect1" to="." method="_on_avatar_select_1_pressed"]
+[connection signal="pressed" from="AvatarSelect2" to="." method="_on_avatar_select_2_pressed"]
+[connection signal="pressed" from="AvatarSelect3" to="." method="_on_avatar_select_3_pressed"]
+[connection signal="pressed" from="AvatarSelect4" to="." method="_on_avatar_select_4_pressed"]
+[connection signal="pressed" from="LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Cheat $1000" to="." method="_on_cheat_1000_pressed"]

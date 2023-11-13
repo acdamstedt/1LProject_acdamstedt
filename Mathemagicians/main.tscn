@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b84sguu5fqajl"]
+[gd_scene load_steps=6 format=3 uid="uid://b84sguu5fqajl"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_60103"]
 [ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_rs0wh"]
 [ext_resource type="FontFile" uid="uid://bl2l6gpa7cxil" path="res://fonts/DarkMagic-2O3w8.ttf" id="3_db03w"]
 [ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="4_2qf2w"]
+[ext_resource type="AudioStream" uid="uid://bmygct5t3o5wg" path="res://Sounds/music.mp3" id="5_8qjw4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_60103")
@@ -47,6 +48,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_2qf2w")
 theme_override_font_sizes/font_size = 100
 text = "Start"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8qjw4")
 
 [connection signal="startGame" from="." to="." method="StartGame"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

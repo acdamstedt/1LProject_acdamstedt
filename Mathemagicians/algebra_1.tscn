@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6qv6ojobxyap"]
+[gd_scene load_steps=13 format=3 uid="uid://b6qv6ojobxyap"]
 
 [ext_resource type="Script" path="res://algebra_1.gd" id="1_aan28"]
 [ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="1_dx800"]
@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="3_dqlsb"]
 [ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="5_lxesy"]
 [ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="6_ylst2"]
+[ext_resource type="Texture2D" uid="uid://crtuwx35p57q5" path="res://art/UnstableUnits.png" id="7_y67rq"]
 [ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="8_e4b7d"]
-[ext_resource type="Texture2D" uid="uid://01qclyk7ndvk" path="res://icon.svg" id="8_ky6eo"]
+[ext_resource type="Texture2D" uid="uid://dhrp3x648gj83" path="res://art/GhostlyGraphs.png" id="8_xw8i8"]
+[ext_resource type="Texture2D" uid="uid://be7atf38loppc" path="res://art/LitLinear.png" id="9_1r657"]
+[ext_resource type="AudioStream" uid="uid://dchq2vvtx1m2o" path="res://Sounds/click.wav" id="12_ol2gl"]
 
 [node name="Algebra1" type="Node"]
 script = ExtResource("1_aan28")
@@ -44,9 +47,9 @@ flip_v = true
 anchor_mode = 0
 
 [node name="Clicker1" parent="." instance=ExtResource("3_dqlsb")]
-offset_left = 48.0
+offset_left = 40.0
 offset_top = 192.0
-offset_right = 171.0
+offset_right = 163.0
 offset_bottom = 315.0
 
 [node name="Clicker2" parent="." instance=ExtResource("3_dqlsb")]
@@ -73,6 +76,7 @@ offset_left = -24.08
 offset_top = 384.0
 offset_right = 98.92
 offset_bottom = 507.0
+icon = ExtResource("7_y67rq")
 
 [node name="Clicker4" parent="." instance=ExtResource("3_dqlsb")]
 visible = false
@@ -85,6 +89,7 @@ offset_left = -24.08
 offset_top = 576.0
 offset_right = 98.92
 offset_bottom = 699.0
+icon = ExtResource("8_xw8i8")
 
 [node name="Clicker5" parent="." instance=ExtResource("3_dqlsb")]
 visible = false
@@ -97,6 +102,7 @@ offset_left = -24.08
 offset_top = 768.0
 offset_right = 104.92
 offset_bottom = 897.0
+icon = ExtResource("9_1r657")
 
 [node name="NewClicker2" parent="." instance=ExtResource("5_lxesy")]
 anchors_preset = 5
@@ -384,14 +390,37 @@ theme_override_fonts/font = ExtResource("8_e4b7d")
 theme_override_font_sizes/font_size = 40
 text = "X"
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Correct" type="Label" parent="."]
 visible = false
-position = Vector2(584, 736)
-texture = ExtResource("8_ky6eo")
+offset_left = 72.0
+offset_top = 896.0
+offset_right = 271.0
+offset_bottom = 964.0
+theme_override_colors/font_color = Color(0, 0.862745, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_font_sizes/font_size = 60
+text = "Correct"
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ol2gl")
+
+[connection signal="specialClickerPressed" from="HUD" to="." method="_on_hud_special_clicker_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker1" to="." method="_on_clicker_1_clicker_timer_timout"]
 [connection signal="onUpgradePressed" from="Clicker1" to="." method="_on_clicker_1_on_upgrade_pressed"]
 [connection signal="pressed" from="Clicker1" to="." method="_on_clicker_1_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker2" to="." method="_on_clicker_2_clicker_timer_timout"]
 [connection signal="onUpgradePressed" from="Clicker2" to="." method="_on_clicker_2_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker2" to="." method="_on_clicker_2_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker3" to="." method="_on_clicker_3_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker3" to="." method="_on_clicker_3_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker3" to="." method="_on_clicker_3_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker4" to="." method="_on_clicker_4_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker4" to="." method="_on_clicker_4_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker4" to="." method="_on_clicker_4_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker5" to="." method="_on_clicker_5_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker5" to="." method="_on_clicker_5_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker5" to="." method="_on_clicker_5_pressed"]
 [connection signal="pressed" from="NewClicker2" to="." method="_on_new_clicker_2_pressed"]
 [connection signal="pressed" from="NewClicker3" to="." method="_on_new_clicker_3_pressed"]
 [connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]

@@ -3,6 +3,7 @@
 extends Button
 
 signal onUpgradePressed()
+signal clickerTimerTimout()
 
 # Creating modifiable variables in Inspector (with default values)
 @export var moneyPerClick = 0
@@ -29,3 +30,7 @@ func _process(delta):
 
 func _on_upgrade_button_pressed():
 	emit_signal("onUpgradePressed")
+
+
+func _on_clicker_timer_timeout():
+	emit_signal("clickerTimerTimout")
