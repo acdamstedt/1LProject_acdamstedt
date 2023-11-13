@@ -9,6 +9,7 @@ Goals for Fall Quarter:
   * Implement mathematical rules in steps
   * (If the answer is wrong) Identify possible step where the mistake was made
 
+Progress Not Up To Date
 Week 1: 
   * Decide on project ✅
 
@@ -18,9 +19,9 @@ Week 2:
   * (optional) Start creating the cookie clicker base game ✅
 
 Week 3: 
-  * Create cookie clicker base game ❌
-  * Review teaching algebra ❌
-  * Decide which mathematical rules to implement first ❌
+  * Create cookie clicker base game ✅
+  * Review teaching algebra ✅
+  * Decide which mathematical rules to implement first ✅
 
 Week 4:   
   * Create math question answering in cookie clicker (not generated questions and answers) ❌
