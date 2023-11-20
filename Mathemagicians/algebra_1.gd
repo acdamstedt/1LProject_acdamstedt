@@ -1,5 +1,8 @@
 # Algebra1
 
+# FIX numUpgrades
+# DO combined
+
 extends Node
 
 # Camera Variables
@@ -8,8 +11,12 @@ var numPages = 3
 var pageNum = 1
 var correctAnswer
 
-var questionFile
-var answerFile
+#var questionFile
+#var answerFile
+
+var question
+var answer
+var answerFormat
 
 
 var currentClicker = []
@@ -19,22 +26,22 @@ var currentIcon = []
 
 func _ready():
 	# Set up clickers
-	$Clicker1/ClickerTitle.text = "Vaporous Potion of Variables"
+	$Clicker1/ClickerTitle.text = "Addition" # "Vaporous Potion of Variables"
 	_clicker_setup($Clicker1, 1.4, 1, 10, 1.1, 1)
-	$Clicker2/ClickerTitle.text = "Illusionary Elixir of Inequalities"
+	$Clicker2/ClickerTitle.text = "Subtraction" # "Illusionary Elixir of Inequalities"
 	_clicker_setup($Clicker2, 1.5, 10, 50, 1.2, 2)
-	$Clicker3/ClickerTitle.text = "Unstable Sword of Units"
+	$Clicker3/ClickerTitle.text = "Multiplication" # "Unstable Sword of Units"
 	_clicker_setup($Clicker3, 1.6, 100, 500, 1.3, 3)
-	$Clicker4/ClickerTitle.text = "Ghostly Amulet of Graphs"
+	$Clicker4/ClickerTitle.text = "Division" # "Ghostly Amulet of Graphs"
 	_clicker_setup($Clicker4, 1.7, 1000, 5000, 1.4, 4)
-	$Clicker5/ClickerTitle.text = "Lit Bomb of Linear Equations"
+	$Clicker5/ClickerTitle.text = "Combined" # "Lit Bomb of Linear Equations"
 	_clicker_setup($Clicker5, 1.8, 10000, 10000, 1.4, 10)
 	
 	# Set up new clickers
-	_newclicker_setup($NewClicker2, "Illusionary Elixir of Inequalities", 100)
-	_newclicker_setup($NewClicker3, "Unstable Sword of Units", 1000)
-	_newclicker_setup($NewClicker4, "Ghostly Amulet of Graphs", 10000)
-	_newclicker_setup($NewClicker5, "Lit Bomb of Linear Equations", 100000)
+	_newclicker_setup($NewClicker2, "Subtraction", 100)
+	_newclicker_setup($NewClicker3, "Multiplication", 1000)
+	_newclicker_setup($NewClicker4, "Division", 10000)
+	_newclicker_setup($NewClicker5, "Combined", 100000)
 
 
 func _process(delta): # While the scene (Algebra 1) is running
@@ -54,32 +61,51 @@ func _process(delta): # While the scene (Algebra 1) is running
 	if !currentClicker.is_empty():
 		$HUD/SpecialClicker.icon = load(currentIcon.front())
 
-func _upgradeQuestion(clickerQuestions, clickerAnswers):
+func _upgradeQuestion(clickerQuestions, clickerAnswers, case):
 	if ($HUD.totalMoney - $Clicker1.upgradePrice) >= 0:
 		$UpgradeBackground.show()
 		$Question.show()
 		$Answer.show()
+		$AnswerFormat.show()
 		$ExitButton.show()
 		
-		questionFile = FileAccess.open("res://QuestionBank/Algebra1/" + clickerQuestions + ".txt", FileAccess.READ)
-		answerFile = FileAccess.open("res://QuestionBank/Algebra1/" + clickerAnswers + ".txt", FileAccess.READ)
+		match(case):
+			0: # Addition
+				_addition_question()
+			1: # Subtraction
+				_subtraction_question()
+			2: # Multiplication
+				_multiplication_question()
+			3: # Division
+				_division_question()
+			4: # Combined
+				_combined_question()
+			_:
+				print("Error in _upgradeQuestion")
 		
-		var questions = []
-		var answers = []
-	
-		while not questionFile.eof_reached():
-			questions.append(questionFile.get_line())
+		$Question.text = question
+		correctAnswer = answer
+		$AnswerFormat.text = answerFormat
 		
-		while not answerFile.eof_reached():
-			answers.append(answerFile.get_line())
+#		questionFile = FileAccess.open("res://QuestionBank/Algebra1/" + clickerQuestions + ".txt", FileAccess.READ)
+#		answerFile = FileAccess.open("res://QuestionBank/Algebra1/" + clickerAnswers + ".txt", FileAccess.READ)
 		
-		questionFile.close()
-		answerFile.close()
+#		var questions = []
+#		var answers = []
 	
-		var index = randi() % (questions.size() - 1)
+#		while not questionFile.eof_reached():
+#			questions.append(questionFile.get_line())
+#
+#		while not answerFile.eof_reached():
+#			answers.append(answerFile.get_line())
+#
+#		questionFile.close()
+#		answerFile.close()
 	
-		$Question.text = questions[index]
-		correctAnswer = answers[index]
+#		var index = randi() % (questions.size() - 1)
+	
+#		$Question.text = questions[index]
+#		correctAnswer = answers[index]
 	else:
 		$UpgradeBackground.show()
 		$ExitButton.show()
@@ -93,6 +119,7 @@ func _on_exit_button_pressed():
 	$Answer.hide()
 	$ExitButton.hide()
 	$Correct.hide()
+	$AnswerFormat.hide()
 	$Answer.text = ""
 
 func _on_answer_text_submitted(new_text):
@@ -101,10 +128,11 @@ func _on_answer_text_submitted(new_text):
 			$Clicker1.numUpgrades += 1
 			$HUD.totalMoney -= $Clicker1.upgradePrice
 			$Correct.show()
+			$Answer.hide()
 
 # Clicker 1
 func _on_clicker_1_on_upgrade_pressed():
-	_upgradeQuestion("Clicker1Questions", "Clicker1Answers")
+	_upgradeQuestion("Clicker1Questions", "Clicker1Answers", 0)
 
 func _on_clicker_1_pressed():
 	_clicker_function($Clicker1, $Clicker1/ClickerTimer)
@@ -115,7 +143,7 @@ func _on_new_clicker_2_pressed(): # Switches NewClicker for Clicker
 	_newclicker_function($NewClicker2, $Clicker2)
 
 func _on_clicker_2_on_upgrade_pressed():
-	_upgradeQuestion("Clicker2Questions", "Clicker2Answers")
+	_upgradeQuestion("Clicker2Questions", "Clicker2Answers", 1)
 
 func _on_clicker_2_pressed():
 	_clicker_function($Clicker2, $Clicker2/ClickerTimer)
@@ -126,7 +154,7 @@ func _on_new_clicker_3_pressed():
 	_newclicker_function($NewClicker3, $Clicker3)
 
 func _on_clicker_3_on_upgrade_pressed():
-	_upgradeQuestion("Clicker3Questions", "Clicker3Answers")
+	_upgradeQuestion("Clicker3Questions", "Clicker3Answers", 2)
 
 func _on_clicker_3_pressed():
 	_clicker_function($Clicker3, $Clicker3/ClickerTimer)
@@ -137,7 +165,7 @@ func _on_new_clicker_4_pressed():
 	_newclicker_function($NewClicker4, $Clicker4)
 
 func _on_clicker_4_on_upgrade_pressed():
-	_upgradeQuestion("Clicker4Questions", "Clicker4Answers")
+	_upgradeQuestion("Clicker4Questions", "Clicker4Answers", 3)
 
 func _on_clicker_4_pressed():
 	_clicker_function($Clicker4, $Clicker4/ClickerTimer)
@@ -148,7 +176,7 @@ func _on_new_clicker_5_pressed():
 	_newclicker_function($NewClicker5, $Clicker5)
 
 func _on_clicker_5_on_upgrade_pressed():
-	_upgradeQuestion("Clicker5Questions", "Clicker5Answers")
+	_upgradeQuestion("Clicker5Questions", "Clicker5Answers", 4)
 
 func _on_clicker_5_pressed():
 	_clicker_function($Clicker5, $Clicker5/ClickerTimer)
@@ -223,6 +251,214 @@ func _special_clicker_check(clicker, timer, icon):
 		currentIcon.erase(icon)
 		if currentClicker.is_empty():
 			$HUD/SpecialClicker.hide()
+
+func _addition_question():
+	var randNum = randi() % 6
+	match (randNum):
+		0:
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 9) + 1
+			question = str(int1) + " + " + str(int2) + " = ?"
+			answer = str(int1 + int2)
+			answerFormat = "Answer Format: #"
+		1:
+			var int1 = (randi() % 99) + 1
+			var int2 = (randi() % 99) + 1
+			question = str(int1) + " + " + str(int2) + " = ?"
+			answer = str(int1 + int2)
+			answerFormat = "Answer Format: #"
+		2:
+			var int1 = (randi() % 99) + 1
+			var int2 = ((randi() % 9) + 1) * 10
+			question = str(int1) + " + " + str(int2) + " = ?"
+			answer = str(int1 + int2)
+			answerFormat = "Answer Format: #"
+		3:
+			var int1 = ((randi() % 99) + 1) * 10
+			var int2 = ((randi() % 99) + 1) * 10
+			question = str(int1) + " + " + str(int2) + " = ?"
+			answer = str(int1 + int2)
+			answerFormat = "Answer Format: #"
+		4:
+			var int1 = (randi() % 10)
+			var int2 = (randi() % 10)
+			question = str(int1) + " + " + str(int2) + " = ?"
+			answer = str(int1 + int2)
+			answerFormat = "Answer Format: #"
+		5: 
+			var num1 = (randi() % 9) + 1
+			var num2 = (randi() % 9) + 1
+			var den
+			if (num1 > num2):
+				den = (randi() % (11 - num1)) + num1
+			else:
+				den = (randi() % (11 - num2)) + num2
+			
+			question = str(num1) + "/" + str(den) + " + " + str(num2) + "/" + str(den) + " = ?"
+			answer = str(num1+num2) + "/" + str(den)
+			answerFormat = "AnswerFormat: #/#"
+		_:
+			print("Error in _addition_question")
+
+func _subtraction_question():
+	var randNum = randi() % 6
+	match (randNum):
+		0:
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 9) + 1
+			var bigNum
+			var smallNum
+			if (int1 > int2):
+				bigNum = int1
+				smallNum = int2
+			else:
+				bigNum = int2
+				smallNum = int1
+			question = str(bigNum) + " - " + str(smallNum) + " = ?"
+			answer = str(bigNum-smallNum)
+			answerFormat = "Answer Format: #"
+		1:
+			var int1 = (randi() % 99) + 1
+			var int2 = (randi() % 99) + 1
+			var bigNum
+			var smallNum
+			if (int1 > int2):
+				bigNum = int1
+				smallNum = int2
+			else:
+				bigNum = int2
+				smallNum = int1
+			question = str(bigNum) + " - " + str(smallNum) + " = ?"
+			answer = str(bigNum-smallNum)
+			answerFormat = "Answer Format: #"
+		2:
+			var int1 = (randi() % 99) + 1
+			var int2 = ((randi() % 9) + 1) * 10
+			var bigNum
+			var smallNum
+			if (int1 > int2):
+				bigNum = int1
+				smallNum = int2
+			else:
+				bigNum = int2
+				smallNum = int1
+			question = str(bigNum) + " - " + str(smallNum) + " = ?"
+			answer = str(bigNum-smallNum)
+			answerFormat = "Answer Format: #"
+		3:
+			var int1 = ((randi() % 99) + 1) * 10
+			var int2 = ((randi() % 99) + 1) * 10
+			var bigNum
+			var smallNum
+			if (int1 > int2):
+				bigNum = int1
+				smallNum = int2
+			else:
+				bigNum = int2
+				smallNum = int1
+			question = str(bigNum) + " - " + str(smallNum) + " = ?"
+			answer = str(bigNum-smallNum)
+			answerFormat = "Answer Format: #"
+		4:
+			var int1 = (randi() % 10)
+			var int2 = (randi() % 10)
+			var bigNum
+			var smallNum
+			if (int1 > int2):
+				bigNum = int1
+				smallNum = int2
+			else:
+				bigNum = int2
+				smallNum = int1
+			question = str(bigNum) + " - " + str(smallNum) + " = ?"
+			answer = str(bigNum-smallNum)
+			answerFormat = "Answer Format: #"
+		5: 
+			var num1 = (randi() % 9) + 1
+			var num2 = (randi() % 9) + 1
+			var bigNum
+			var smallNum
+			var den
+			if (num1 > num2):
+				den = (randi() % (11 - num1)) + num1
+				bigNum = num1
+				smallNum = num2
+			else:
+				den = (randi() % (11 - num2)) + num2
+				bigNum = num2
+				smallNum = num1
+			
+			question = str(bigNum) + "/" + str(den) + " - " + str(smallNum) + "/" + str(den) + " = ?"
+			answer = str(bigNum-smallNum) + "/" + str(den)
+			answerFormat = "AnswerFormat: #/#"
+		_:
+			print("Error in _subtraction_question")
+
+func _multiplication_question():
+	var randNum = randi() % 4
+	match (randNum):
+		0:
+			var int1 = (randi() % 12) + 1
+			var int2 = (randi() % 12) + 1
+			question = str(int1) + " * " + str(int2) + " = ?"
+			answer = str(int1 * int2)
+			answerFormat = "Answer Format: #"
+		1:
+			var int1 = (randi() % 12) + 1
+			var int2 = 10
+			question = str(int1) + " * " + str(int2) + " = ?"
+			answer = str(int1 * int2)
+			answerFormat = "Answer Format: #"
+		2:
+			var int1 = (randi() % 12) + 1
+			var int2 = 100
+			question = str(int1) + " * " + str(int2) + " = ?"
+			answer = str(int1 * int2)
+			answerFormat = "Answer Format: #"
+		3:
+			var int1 = (randi() % 12) + 1
+			var int2 = 0
+			question = str(int1) + " * " + str(int2) + " = ?"
+			answer = str(int1 * int2)
+			answerFormat = "Answer Format: #"
+		_:
+			print("Error in _multiplication_question")
+
+func _division_question():
+	var randNum = randi() % 2
+	match (randNum):
+		0:
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 9) + 1
+			var int3 = int1 * int2
+			question = str(int3) + " / " + str(int1) + " = ?"
+			answer = str(int2)
+			answerFormat = "Answer Format: #"
+		1:
+			var int1 = (randi() % 9) + 1
+			var int2 = ((randi() % 9) + 1) * 100
+			var int3 = int1 * int2
+			question = str(int3) + " / " + str(int2) + " = ?"
+			answer = str(int1)
+			answerFormat = "Answer Format: #"
+		_:
+			print("Error in _division_question")
+
+func _combined_question():
+	var randNum = randi() % 5
+	match (randNum):
+		0:
+			pass
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+		4:
+			pass
+		_:
+			print("Error in _combined_question")
 
 # Timeouts
 

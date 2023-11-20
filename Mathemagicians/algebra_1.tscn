@@ -366,7 +366,6 @@ offset_right = 231.92
 offset_bottom = 760.32
 theme_override_fonts/font = ExtResource("8_e4b7d")
 theme_override_font_sizes/font_size = 60
-text = "Hello"
 autowrap_mode = 2
 
 [node name="Answer" type="LineEdit" parent="."]
@@ -392,18 +391,29 @@ text = "X"
 
 [node name="Correct" type="Label" parent="."]
 visible = false
-offset_left = 72.0
-offset_top = 896.0
-offset_right = 271.0
-offset_bottom = 964.0
-theme_override_colors/font_color = Color(0, 0.862745, 0, 1)
+offset_left = 80.0
+offset_top = 992.0
+offset_right = 296.0
+offset_bottom = 1068.0
+theme_override_colors/font_shadow_color = Color(0.109804, 0.552941, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
 theme_override_fonts/font = ExtResource("8_e4b7d")
 theme_override_font_sizes/font_size = 60
-text = "Correct"
+text = "Correct!"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_ol2gl")
+
+[node name="AnswerFormat" type="Label" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 920.0
+offset_right = 387.0
+offset_bottom = 966.0
+theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_font_sizes/font_size = 30
+text = "Answer Format: #"
 
 [connection signal="specialClickerPressed" from="HUD" to="." method="_on_hud_special_clicker_pressed"]
 [connection signal="clickerTimerTimout" from="Clicker1" to="." method="_on_clicker_1_clicker_timer_timout"]
@@ -438,4 +448,5 @@ stream = ExtResource("12_ol2gl")
 [connection signal="pressed" from="NewClicker14" to="." method="_on_new_clicker_5_pressed"]
 [connection signal="pressed" from="NewClicker15" to="." method="_on_new_clicker_2_pressed"]
 [connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
+[connection signal="button_down" from="ExitButton" to="." method="_on_exit_button_button_down"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
