@@ -1,4 +1,4 @@
-# Algebra2
+# Algebra3
 
 extends Node
 
@@ -62,6 +62,7 @@ func _upgradeQuestion(clickerQuestions, clickerAnswers, case, clicker):
 		$UpgradeBackground.show()
 		$Question.show()
 		$Answer.show()
+		$AnswerFormat.show()
 		$ExitButton.show()
 		
 #		match(case):
@@ -114,6 +115,7 @@ func _on_exit_button_pressed():
 	$Answer.hide()
 	$ExitButton.hide()
 	$Correct.hide()
+	$AnswerFormat.hide()
 	$Answer.text = ""
 
 func _on_answer_text_submitted(new_text):

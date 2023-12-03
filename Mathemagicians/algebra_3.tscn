@@ -1,38 +1,38 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6qv6ojobxyap"]
+[gd_scene load_steps=13 format=3 uid="uid://x8jk17ydfyx"]
 
-[ext_resource type="Script" path="res://algebra_1.gd" id="1_aan28"]
-[ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="1_dx800"]
-[ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="2_d40lj"]
-[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_pp3hv"]
-[ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="3_dqlsb"]
-[ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="5_lxesy"]
-[ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="6_ylst2"]
-[ext_resource type="Texture2D" uid="uid://crtuwx35p57q5" path="res://art/UnstableUnits.png" id="7_y67rq"]
-[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="8_e4b7d"]
-[ext_resource type="Texture2D" uid="uid://dhrp3x648gj83" path="res://art/GhostlyGraphs.png" id="8_xw8i8"]
-[ext_resource type="Texture2D" uid="uid://be7atf38loppc" path="res://art/LitLinear.png" id="9_1r657"]
-[ext_resource type="AudioStream" uid="uid://dchq2vvtx1m2o" path="res://Sounds/click.wav" id="12_ol2gl"]
+[ext_resource type="Script" path="res://algebra_3.gd" id="1_l1n50"]
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="1_nkf48"]
+[ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="2_4a4th"]
+[ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="3_lvb2u"]
+[ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="4_kkqly"]
+[ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="5_q4h6g"]
+[ext_resource type="Texture2D" uid="uid://crtuwx35p57q5" path="res://art/UnstableUnits.png" id="6_i0u4x"]
+[ext_resource type="Texture2D" uid="uid://dhrp3x648gj83" path="res://art/GhostlyGraphs.png" id="7_s11eu"]
+[ext_resource type="Texture2D" uid="uid://be7atf38loppc" path="res://art/LitLinear.png" id="8_vmt8c"]
+[ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="9_lo6ap"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="10_rvlf1"]
+[ext_resource type="AudioStream" uid="uid://dchq2vvtx1m2o" path="res://Sounds/click.wav" id="11_2eh3n"]
 
-[node name="Algebra1" type="Node"]
-script = ExtResource("1_aan28")
+[node name="Algebra3" type="Node"]
+script = ExtResource("1_l1n50")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.666667, 0.666667)
-texture = ExtResource("2_pp3hv")
+texture = ExtResource("1_nkf48")
 centered = false
 
-[node name="HUD" parent="." instance=ExtResource("2_d40lj")]
+[node name="HUD" parent="." instance=ExtResource("2_4a4th")]
 
-[node name="Camera2D" parent="." instance=ExtResource("1_dx800")]
+[node name="Camera2D" parent="." instance=ExtResource("3_lvb2u")]
 anchor_mode = 0
 
-[node name="Clicker1" parent="." instance=ExtResource("3_dqlsb")]
+[node name="Clicker1" parent="." instance=ExtResource("4_kkqly")]
 offset_left = 40.0
 offset_top = 192.0
 offset_right = 163.0
 offset_bottom = 315.0
 
-[node name="Clicker2" parent="." instance=ExtResource("3_dqlsb")]
+[node name="Clicker2" parent="." instance=ExtResource("4_kkqly")]
 visible = false
 anchors_preset = -1
 anchor_left = 0.089
@@ -43,9 +43,9 @@ offset_left = -24.08
 offset_top = 192.0
 offset_right = 98.92
 offset_bottom = 315.0
-icon = ExtResource("6_ylst2")
+icon = ExtResource("5_q4h6g")
 
-[node name="Clicker3" parent="." instance=ExtResource("3_dqlsb")]
+[node name="Clicker3" parent="." instance=ExtResource("4_kkqly")]
 visible = false
 anchors_preset = -1
 anchor_left = 0.089
@@ -56,9 +56,9 @@ offset_left = -24.08
 offset_top = 384.0
 offset_right = 98.92
 offset_bottom = 507.0
-icon = ExtResource("7_y67rq")
+icon = ExtResource("6_i0u4x")
 
-[node name="Clicker4" parent="." instance=ExtResource("3_dqlsb")]
+[node name="Clicker4" parent="." instance=ExtResource("4_kkqly")]
 visible = false
 anchors_preset = -1
 anchor_left = 0.089
@@ -69,9 +69,9 @@ offset_left = -24.08
 offset_top = 576.0
 offset_right = 98.92
 offset_bottom = 699.0
-icon = ExtResource("8_xw8i8")
+icon = ExtResource("7_s11eu")
 
-[node name="Clicker5" parent="." instance=ExtResource("3_dqlsb")]
+[node name="Clicker5" parent="." instance=ExtResource("4_kkqly")]
 visible = false
 anchors_preset = -1
 anchor_left = 0.089
@@ -82,9 +82,9 @@ offset_left = -24.08
 offset_top = 768.0
 offset_right = 104.92
 offset_bottom = 897.0
-icon = ExtResource("9_1r657")
+icon = ExtResource("8_vmt8c")
 
-[node name="NewClicker2" parent="." instance=ExtResource("5_lxesy")]
+[node name="NewClicker2" parent="." instance=ExtResource("9_lo6ap")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -93,7 +93,7 @@ offset_top = 408.0
 offset_right = 128.0
 offset_bottom = 536.0
 
-[node name="NewClicker3" parent="." instance=ExtResource("5_lxesy")]
+[node name="NewClicker3" parent="." instance=ExtResource("9_lo6ap")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -102,7 +102,7 @@ offset_top = 600.0
 offset_right = 128.0
 offset_bottom = 728.0
 
-[node name="NewClicker4" parent="." instance=ExtResource("5_lxesy")]
+[node name="NewClicker4" parent="." instance=ExtResource("9_lo6ap")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -111,7 +111,7 @@ offset_top = 792.0
 offset_right = 128.0
 offset_bottom = 920.0
 
-[node name="NewClicker5" parent="." instance=ExtResource("5_lxesy")]
+[node name="NewClicker5" parent="." instance=ExtResource("9_lo6ap")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -142,7 +142,7 @@ offset_left = -296.08
 offset_top = 16.32
 offset_right = 231.92
 offset_bottom = 760.32
-theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_fonts/font = ExtResource("10_rvlf1")
 theme_override_font_sizes/font_size = 60
 autowrap_mode = 2
 
@@ -152,7 +152,7 @@ offset_left = 72.0
 offset_top = 960.0
 offset_right = 664.0
 offset_bottom = 1096.0
-theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_fonts/font = ExtResource("10_rvlf1")
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Enter Answer Here"
 clear_button_enabled = true
@@ -163,7 +163,7 @@ offset_left = 616.0
 offset_top = 192.0
 offset_right = 672.0
 offset_bottom = 248.0
-theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_fonts/font = ExtResource("10_rvlf1")
 theme_override_font_sizes/font_size = 40
 text = "X"
 
@@ -176,12 +176,12 @@ offset_bottom = 1068.0
 theme_override_colors/font_shadow_color = Color(0.109804, 0.552941, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
-theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_fonts/font = ExtResource("10_rvlf1")
 theme_override_font_sizes/font_size = 60
 text = "Correct!"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_ol2gl")
+stream = ExtResource("11_2eh3n")
 
 [node name="AnswerFormat" type="Label" parent="."]
 visible = false
@@ -189,7 +189,7 @@ offset_left = 72.0
 offset_top = 920.0
 offset_right = 387.0
 offset_bottom = 966.0
-theme_override_fonts/font = ExtResource("8_e4b7d")
+theme_override_fonts/font = ExtResource("10_rvlf1")
 theme_override_font_sizes/font_size = 30
 text = "Answer Format: #"
 
@@ -214,5 +214,4 @@ text = "Answer Format: #"
 [connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]
 [connection signal="pressed" from="NewClicker5" to="." method="_on_new_clicker_5_pressed"]
 [connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
-[connection signal="button_down" from="ExitButton" to="." method="_on_exit_button_button_down"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

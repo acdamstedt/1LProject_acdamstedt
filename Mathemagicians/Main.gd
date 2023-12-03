@@ -12,4 +12,4 @@ func _on_start_button_pressed():
 	
 
 func StartGame():
-	get_tree().change_scene_to_file("res://save_game.tscn") # Changes scene
+	get_tree().change_scene_to_file("res://level_select.tscn") # Changes scene

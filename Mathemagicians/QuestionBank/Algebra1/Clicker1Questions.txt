@@ -1,20 +1,5 @@
-If this was a math question, what would the answer be? (Hint: The answer is 1)
-If this was a math question, what would the answer be? (Hint: The answer is 2)
-If this was a math question, what would the answer be? (Hint: The answer is 3)
-If this was a math question, what would the answer be? (Hint: The answer is 4)
-If this was a math question, what would the answer be? (Hint: The answer is 5)
-If this was a math question, what would the answer be? (Hint: The answer is 6)
-If this was a math question, what would the answer be? (Hint: The answer is 7)
-If this was a math question, what would the answer be? (Hint: The answer is 8)
-If this was a math question, what would the answer be? (Hint: The answer is 9)
-If this was a math question, what would the answer be? (Hint: The answer is 10)
-If this was a math question, what would the answer be? (Hint: The answer is 11)
-If this was a math question, what would the answer be? (Hint: The answer is 12)
-If this was a math question, what would the answer be? (Hint: The answer is 13)
-If this was a math question, what would the answer be? (Hint: The answer is 14)
-If this was a math question, what would the answer be? (Hint: The answer is 15)
-If this was a math question, what would the answer be? (Hint: The answer is 16)
-If this was a math question, what would the answer be? (Hint: The answer is 17)
-If this was a math question, what would the answer be? (Hint: The answer is 18)
-If this was a math question, what would the answer be? (Hint: The answer is 19)
-If this was a math question, what would the answer be? (Hint: The answer is 20)
+An arithmetic sequence has u1 = 40, u2 = 32, u3 = 24. Find the common difference, d.
+Jeremy invests $8000 into a savings account that pays an annual interest rate of 5.5%, compounded annually. Write down a formula which calculates that total value of the investment after n years.
+Consider an arithmetic sequence 2,6,10,14,… Find the sum of the first 10 terms in the sequence.
+A bouncy ball is dropped from a height of 2 metres onto a concrete floor. After hitting the floor, the ball rebounds back up to 80% of it's previous height, and this pattern continues on repeatedly, until coming to rest. Find an expression for the total distance travelled by the ball, in terms of the number of bounces, n.
+The first three terms of a geometric sequence are lnx^9, lnx^3, lnx, for x>0. Find the common ratio.

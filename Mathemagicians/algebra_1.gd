@@ -1,8 +1,5 @@
 # Algebra1
 
-# FIX numUpgrades
-# DO combined
-
 extends Node
 
 # Camera Variables
@@ -22,6 +19,8 @@ var answerFormat
 var currentClicker = []
 var currentTimer = []
 var currentIcon = []
+
+var upgradeClicker
 
 
 func _ready():
@@ -45,15 +44,15 @@ func _ready():
 
 
 func _process(delta): # While the scene (Algebra 1) is running
-	# Camera functionality
-	if Input.is_action_pressed("up"): # "page_left" specified in Project Settings -> Input Map
-		$Camera2D.position.y -= pageSize
-		await get_tree().create_timer(0.5).timeout
-	if Input.is_action_pressed("down"):
-		$Camera2D.position.y += pageSize
-		await get_tree().create_timer(0.5).timeout
-	
-	$Camera2D.position.y = clamp($Camera2D.position.y, 0, 1980)
+#	# Camera functionality
+#	if Input.is_action_pressed("up"): # "page_left" specified in Project Settings -> Input Map
+#		$Camera2D.position.y -= pageSize
+#		await get_tree().create_timer(0.5).timeout
+#	if Input.is_action_pressed("down"):
+#		$Camera2D.position.y += pageSize
+#		await get_tree().create_timer(0.5).timeout
+#
+#	$Camera2D.position.y = clamp($Camera2D.position.y, 0, 1280)
 	
 	if Input.is_action_pressed("click"):
 		$ClickSound.play()
@@ -61,8 +60,9 @@ func _process(delta): # While the scene (Algebra 1) is running
 	if !currentClicker.is_empty():
 		$HUD/SpecialClicker.icon = load(currentIcon.front())
 
-func _upgradeQuestion(clickerQuestions, clickerAnswers, case):
-	if ($HUD.totalMoney - $Clicker1.upgradePrice) >= 0:
+func _upgradeQuestion(clickerQuestions, clickerAnswers, case, clicker):
+	upgradeClicker = clicker
+	if ($HUD.totalMoney - upgradeClicker.upgradePrice) >= 0:
 		$UpgradeBackground.show()
 		$Question.show()
 		$Answer.show()
@@ -124,15 +124,15 @@ func _on_exit_button_pressed():
 
 func _on_answer_text_submitted(new_text):
 	if new_text == correctAnswer:
-		if ($HUD.totalMoney - $Clicker1.upgradePrice) >= 0:
-			$Clicker1.numUpgrades += 1
-			$HUD.totalMoney -= $Clicker1.upgradePrice
+		if ($HUD.totalMoney - upgradeClicker.upgradePrice) >= 0:
+			upgradeClicker.numUpgrades += 1
+			$HUD.totalMoney -= upgradeClicker.upgradePrice
 			$Correct.show()
 			$Answer.hide()
 
 # Clicker 1
 func _on_clicker_1_on_upgrade_pressed():
-	_upgradeQuestion("Clicker1Questions", "Clicker1Answers", 0)
+	_upgradeQuestion("Clicker1Questions", "Clicker1Answers", 0, $Clicker1)
 
 func _on_clicker_1_pressed():
 	_clicker_function($Clicker1, $Clicker1/ClickerTimer)
@@ -143,7 +143,7 @@ func _on_new_clicker_2_pressed(): # Switches NewClicker for Clicker
 	_newclicker_function($NewClicker2, $Clicker2)
 
 func _on_clicker_2_on_upgrade_pressed():
-	_upgradeQuestion("Clicker2Questions", "Clicker2Answers", 1)
+	_upgradeQuestion("Clicker2Questions", "Clicker2Answers", 1, $Clicker2)
 
 func _on_clicker_2_pressed():
 	_clicker_function($Clicker2, $Clicker2/ClickerTimer)
@@ -154,7 +154,7 @@ func _on_new_clicker_3_pressed():
 	_newclicker_function($NewClicker3, $Clicker3)
 
 func _on_clicker_3_on_upgrade_pressed():
-	_upgradeQuestion("Clicker3Questions", "Clicker3Answers", 2)
+	_upgradeQuestion("Clicker3Questions", "Clicker3Answers", 2, $Clicker3)
 
 func _on_clicker_3_pressed():
 	_clicker_function($Clicker3, $Clicker3/ClickerTimer)
@@ -165,7 +165,7 @@ func _on_new_clicker_4_pressed():
 	_newclicker_function($NewClicker4, $Clicker4)
 
 func _on_clicker_4_on_upgrade_pressed():
-	_upgradeQuestion("Clicker4Questions", "Clicker4Answers", 3)
+	_upgradeQuestion("Clicker4Questions", "Clicker4Answers", 3, $Clicker4)
 
 func _on_clicker_4_pressed():
 	_clicker_function($Clicker4, $Clicker4/ClickerTimer)
@@ -176,32 +176,13 @@ func _on_new_clicker_5_pressed():
 	_newclicker_function($NewClicker5, $Clicker5)
 
 func _on_clicker_5_on_upgrade_pressed():
-	_upgradeQuestion("Clicker5Questions", "Clicker5Answers", 4)
+	_upgradeQuestion("Clicker5Questions", "Clicker5Answers", 4, $Clicker5)
 
 func _on_clicker_5_pressed():
 	_clicker_function($Clicker5, $Clicker5/ClickerTimer)
 	_special_clicker_check($Clicker5, $Clicker5/ClickerTimer, "res://art/LitLinear.png")
 
-# Clicker 6
-
-# Clicker 7
-
-# Clicker 8
-
-# Clicker 9
-
-# Clicker 10
-
-# Clicker 11
-
-# Clicker 12
-
-# Clicker 13
-
-# Clicker 14
-
-# Clicker 15
-
+# More functions
 func _clicker_setup(clicker, moneyScale, startMoney, baseUpgradePrice, upgradeScale, timePerClick):
 	clicker.moneyScale = moneyScale
 	clicker.startMoney = startMoney
@@ -430,16 +411,16 @@ func _division_question():
 		0:
 			var int1 = (randi() % 9) + 1
 			var int2 = (randi() % 9) + 1
-			var int3 = int1 * int2
-			question = str(int3) + " / " + str(int1) + " = ?"
+			# var int3 = int1 * int2
+			question = str(int1 * int2) + " / " + str(int1) + " = ?"
 			answer = str(int2)
 			answerFormat = "Answer Format: #"
 		1:
 			var int1 = (randi() % 9) + 1
 			var int2 = ((randi() % 9) + 1) * 100
-			var int3 = int1 * int2
-			question = str(int3) + " / " + str(int2) + " = ?"
-			answer = str(int1)
+			# var int3 = int1 * int2
+			question = str(int1 * int2) + " / " + str(int1) + " = ?"
+			answer = str(int2)
 			answerFormat = "Answer Format: #"
 		_:
 			print("Error in _division_question")
@@ -448,15 +429,53 @@ func _combined_question():
 	var randNum = randi() % 5
 	match (randNum):
 		0:
-			pass
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 9) + 1
+			var int3 = (randi() % 9) + 1
+			var int4 = (randi() % 9) + 1
+			var bigNum
+			var smallNum
+			if (int3 > int4):
+				bigNum = int3
+				smallNum = int4
+			else:
+				bigNum = int4
+				smallNum = int3
+			question = "(" + str(int1) + " + " + str(int2) + ")" + " * (" + str(bigNum) + " - " + str(smallNum) + ") = ?"
+			answer = str((int1+int2)*(bigNum-smallNum))
+			answerFormat = "Answer Format: #"
 		1:
-			pass
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 7) + 3
+			var int3 = (randi() % 7) + 3
+			var int4 = (randi() % 3) + 1
+			question = str(int1) + " + " + str(int2) + " * " + str(int3) + " - " + str(int4) + " = ?"
+			answer = str(int1 + (int2*int3) - int4)
+			answerFormat = "Answer Format: #"
 		2:
-			pass
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 9) + 1
+			var int3 = (randi() % 9) + 1
+			var int4 = (randi() % 9) + 1
+			question = str(int1*int2) + " / " + str(int2) + " + " + str(int3) + " * " + str(int4) + " = ?"
+			answer = str(int1 + (int3*int4))
+			answerFormat = "Answer Format: #"
 		3:
-			pass
+			var int1 = (randi() % 9) + 1
+			var int2 = (randi() % 7) + 3
+			var int3 = (randi() % 7) + 3
+			var int4 = (randi() % 3) + 1
+			question = str(int1) + " + (" + str(int2*int3) + " / " + str(int3) + ") - " + str(int4) + " = ?"
+			answer = str(int1 + int2 - int4)
+			answerFormat = "Answer Format: #"
 		4:
-			pass
+			var int1 = ((randi() % 9) + 1) * 10
+			var int2 = ((randi() % 9) + 1) * 10
+			var int3 = (randi() % 9) + 1
+			var int4 = (randi() % 9) + 1
+			question = str(int1) + " + " + str(int2) + " - " + str(int3*int4) + " * " + str(int3) + " / " + str(int4) + " = ?"
+			answer = str(int1 + int2 - (int3*int3))
+			answerFormat = "Answer Format: #"
 		_:
 			print("Error in _combined_question")
 

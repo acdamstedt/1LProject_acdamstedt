@@ -1,20 +1,5 @@
-If this was a math question, what would the answer be? (Hint: The answer is 1)
-If this was a math question, what would the answer be? (Hint: The answer is 2)
-If this was a math question, what would the answer be? (Hint: The answer is 3)
-If this was a math question, what would the answer be? (Hint: The answer is 4)
-If this was a math question, what would the answer be? (Hint: The answer is 5)
-If this was a math question, what would the answer be? (Hint: The answer is 6)
-If this was a math question, what would the answer be? (Hint: The answer is 7)
-If this was a math question, what would the answer be? (Hint: The answer is 8)
-If this was a math question, what would the answer be? (Hint: The answer is 9)
-If this was a math question, what would the answer be? (Hint: The answer is 10)
-If this was a math question, what would the answer be? (Hint: The answer is 11)
-If this was a math question, what would the answer be? (Hint: The answer is 12)
-If this was a math question, what would the answer be? (Hint: The answer is 13)
-If this was a math question, what would the answer be? (Hint: The answer is 14)
-If this was a math question, what would the answer be? (Hint: The answer is 15)
-If this was a math question, what would the answer be? (Hint: The answer is 16)
-If this was a math question, what would the answer be? (Hint: The answer is 17)
-If this was a math question, what would the answer be? (Hint: The answer is 18)
-If this was a math question, what would the answer be? (Hint: The answer is 19)
-If this was a math question, what would the answer be? (Hint: The answer is 20)
+Find the number of ways in which twelve different baseball cards can be given to Emily, Harry, John and Olivia, if Emily is to receive 5 cards, Harry is to receive 3 cards, John is to receive 3 cards and Olivia is to receive 1 card.
+A police department has 4 male and 7 female officers. A special group of 5 officers is to be assembled for an undercover operation. Determine how many possile groups can be chosen.
+A school basketball team of 5 students is selected from 8 boys and 4 girls. Determine how many teams can be formed consisting of 3 boys and 2 girls?
+An arts and crafts store is offering a special package on personalized keychains. Customers can choose to personalize their keychains with up to 3 different charms from a selection of 6 different types of charms. Determine how many ways a customer can personalize a keychain if the order is important.
+Sophia and Zoe compete in a freestyle swimming race where there are no tied finishes and there is a total of 10 competitors. Find the total number of possible ways in which the ten swimmers can finish if Zoe finishes in the position immediately after Sophia.

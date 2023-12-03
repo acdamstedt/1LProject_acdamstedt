@@ -1,26 +1,207 @@
-[gd_scene load_steps=3 format=3 uid="uid://kn1ffw2cut41"]
+[gd_scene load_steps=13 format=3 uid="uid://kn1ffw2cut41"]
 
 [ext_resource type="PackedScene" uid="uid://dqjt2jrwvrtr2" path="res://hud.tscn" id="1_qgct0"]
 [ext_resource type="Script" path="res://algebra_2.gd" id="1_v43ij"]
+[ext_resource type="Texture2D" uid="uid://xx3m1qtcmw6k" path="res://art/MathBackground.png" id="2_8qs3g"]
+[ext_resource type="PackedScene" uid="uid://dg7whtlqfn8v3" path="res://camera_2d.tscn" id="4_tg3ld"]
+[ext_resource type="PackedScene" uid="uid://csxhxbuvjc8jy" path="res://clicker.tscn" id="5_3cq00"]
+[ext_resource type="Texture2D" uid="uid://dvktchfcaukm8" path="res://art/IllusionInequalities.png" id="6_w6ui6"]
+[ext_resource type="Texture2D" uid="uid://crtuwx35p57q5" path="res://art/UnstableUnits.png" id="7_hdu5y"]
+[ext_resource type="Texture2D" uid="uid://dhrp3x648gj83" path="res://art/GhostlyGraphs.png" id="8_td21c"]
+[ext_resource type="Texture2D" uid="uid://be7atf38loppc" path="res://art/LitLinear.png" id="9_0su0e"]
+[ext_resource type="PackedScene" uid="uid://bwrpipapyffof" path="res://new_clicker.tscn" id="10_hxtrm"]
+[ext_resource type="FontFile" uid="uid://crllml678fbxx" path="res://fonts/BodoniflfBold-MVZx.ttf" id="11_p46jk"]
+[ext_resource type="AudioStream" uid="uid://dchq2vvtx1m2o" path="res://Sounds/click.wav" id="12_hwog3"]
 
 [node name="Algebra2" type="Node"]
 script = ExtResource("1_v43ij")
 
-[node name="FillerLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -311.0
-offset_top = -140.0
-offset_right = 311.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 100
-text = "Level Under
-Construction"
-horizontal_alignment = 1
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_8qs3g")
+centered = false
 
 [node name="HUD" parent="." instance=ExtResource("1_qgct0")]
+
+[node name="Camera2D" parent="." instance=ExtResource("4_tg3ld")]
+anchor_mode = 0
+
+[node name="Clicker1" parent="." instance=ExtResource("5_3cq00")]
+offset_left = 40.0
+offset_top = 192.0
+offset_right = 163.0
+offset_bottom = 315.0
+
+[node name="Clicker2" parent="." instance=ExtResource("5_3cq00")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 192.0
+offset_right = 98.92
+offset_bottom = 315.0
+icon = ExtResource("6_w6ui6")
+
+[node name="Clicker3" parent="." instance=ExtResource("5_3cq00")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 384.0
+offset_right = 98.92
+offset_bottom = 507.0
+icon = ExtResource("7_hdu5y")
+
+[node name="Clicker4" parent="." instance=ExtResource("5_3cq00")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 576.0
+offset_right = 98.92
+offset_bottom = 699.0
+icon = ExtResource("8_td21c")
+
+[node name="Clicker5" parent="." instance=ExtResource("5_3cq00")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.15
+anchor_right = 0.089
+anchor_bottom = 0.15
+offset_left = -24.08
+offset_top = 768.0
+offset_right = 104.92
+offset_bottom = 897.0
+icon = ExtResource("9_0su0e")
+
+[node name="NewClicker2" parent="." instance=ExtResource("10_hxtrm")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 408.0
+offset_right = 128.0
+offset_bottom = 536.0
+
+[node name="NewClicker3" parent="." instance=ExtResource("10_hxtrm")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 600.0
+offset_right = 128.0
+offset_bottom = 728.0
+
+[node name="NewClicker4" parent="." instance=ExtResource("10_hxtrm")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 792.0
+offset_right = 128.0
+offset_bottom = 920.0
+
+[node name="NewClicker5" parent="." instance=ExtResource("10_hxtrm")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 984.0
+offset_right = 128.0
+offset_bottom = 1112.0
+
+[node name="UpgradeBackground" type="ColorRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 0.006
+anchor_bottom = 0.006
+offset_left = 40.0
+offset_top = 162.32
+offset_right = 688.0
+offset_bottom = 1114.32
+color = Color(0.929412, 0.717647, 0.847059, 1)
+
+[node name="Question" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.489
+anchor_top = 0.131
+anchor_right = 0.489
+anchor_bottom = 0.131
+offset_left = -296.08
+offset_top = 16.32
+offset_right = 231.92
+offset_bottom = 760.32
+theme_override_fonts/font = ExtResource("11_p46jk")
+theme_override_font_sizes/font_size = 50
+autowrap_mode = 2
+
+[node name="Answer" type="LineEdit" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 960.0
+offset_right = 664.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("11_p46jk")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter Answer Here"
+clear_button_enabled = true
+
+[node name="ExitButton" type="Button" parent="."]
+visible = false
+offset_left = 616.0
+offset_top = 192.0
+offset_right = 672.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("11_p46jk")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[node name="Correct" type="Label" parent="."]
+visible = false
+offset_left = 80.0
+offset_top = 992.0
+offset_right = 296.0
+offset_bottom = 1068.0
+theme_override_colors/font_shadow_color = Color(0.109804, 0.552941, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("11_p46jk")
+theme_override_font_sizes/font_size = 60
+text = "Correct!"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hwog3")
+
+[connection signal="specialClickerPressed" from="HUD" to="." method="_on_hud_special_clicker_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker1" to="." method="_on_clicker_1_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker1" to="." method="_on_clicker_1_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker1" to="." method="_on_clicker_1_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker2" to="." method="_on_clicker_2_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker2" to="." method="_on_clicker_2_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker2" to="." method="_on_clicker_2_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker3" to="." method="_on_clicker_3_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker3" to="." method="_on_clicker_3_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker3" to="." method="_on_clicker_3_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker4" to="." method="_on_clicker_4_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker4" to="." method="_on_clicker_4_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker4" to="." method="_on_clicker_4_pressed"]
+[connection signal="clickerTimerTimout" from="Clicker5" to="." method="_on_clicker_5_clicker_timer_timout"]
+[connection signal="onUpgradePressed" from="Clicker5" to="." method="_on_clicker_5_on_upgrade_pressed"]
+[connection signal="pressed" from="Clicker5" to="." method="_on_clicker_5_pressed"]
+[connection signal="pressed" from="NewClicker2" to="." method="_on_new_clicker_2_pressed"]
+[connection signal="pressed" from="NewClicker3" to="." method="_on_new_clicker_3_pressed"]
+[connection signal="pressed" from="NewClicker4" to="." method="_on_new_clicker_4_pressed"]
+[connection signal="pressed" from="NewClicker5" to="." method="_on_new_clicker_5_pressed"]
+[connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
